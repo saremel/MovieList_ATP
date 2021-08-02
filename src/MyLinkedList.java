@@ -20,7 +20,7 @@ public class MyLinkedList {
         size ++;
     }
 
-    public void searhByTitle(String title){
+    public void searchByTitle(String title){
         MyNode currentNode = root;
         while(currentNode != null){
             Movie m = currentNode.getMovie();

@@ -4,6 +4,7 @@ public class Movie {
     String genre;
     String director;
 
+
     public String getTitle() {
         return title;
     }
@@ -36,7 +37,10 @@ public class Movie {
         this.director = director;
     }
 
+
+
     public Movie(String title, int year, String genre, String director) {
+
         this.title = title;
         this.year = year;
         this.genre = genre;
