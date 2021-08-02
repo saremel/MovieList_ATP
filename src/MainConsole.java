@@ -6,11 +6,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainConsole {
-    static ArrayList<Movie> list;
-
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        fillListWithMovie();
+        ArrayList list= new ArrayList<Movie>();
+        fillListWithMovie(list);
 
         System.out.println("Welcome to the Movie Organizer! \r \n");
         System.out.println("Please choose a option");
@@ -24,30 +23,42 @@ public class MainConsole {
 
             boolean status = true;
             while (status){
-                System.out.println("Enter your choice:");
-                String selection =  scanner.nextLine();
-
+                System.out.println("Enter your choice with a number:");
+                int selection =  scanner.nextInt();
                 switch (selection){
-                    case "1":
+                    case 1:
                         status = false;
-                        menu1();
+                        System.out.println(list.toString());
                         break;
-                    case "2":
+                    case 2:
                         status = false;
-                        menu2();
+                        // find movie by genre
                         break;
-                    case "3":
+                    case 3:
                         status = false;
-                        menu3();
+                        System.out.println("Enter the new movie's title");
+                        String title = scanner.nextLine();
+                        System.out.println("Enter the new movie's director");
+                        String director = scanner.nextLine();
+                        System.out.println("Enter the movie's genre");
+                        String genre = scanner.nextLine();
+                        System.out.println("Enter the movie' year");
+                        int year = scanner.nextInt();
+                        Movie m = new Movie(title, year, genre, director);
+                        list.add(m);
+                        System.out.println("Movie added");
                         break;
-                    case "4":
+                    case 4:
                         status = false;
-                        menu4();
+                        // delete movie by name
                         break;
-                    case "0":
+                    case 0:
                         status = false;
+                        System.out.println("See you :)");
                         appRunning = false;
                         break;
+                    default:
+                        System.out.println("Please enter a valid number");
 
                 }
 
@@ -61,9 +72,7 @@ public class MainConsole {
 
     }
 
-    private static void fillListWithMovie() {
-
-
+    private static void fillListWithMovie(ArrayList<Movie> list) {
         String[] ar;
         String filePath = "C:\\Users\\sarey\\Desktop\\deneme.txt";
         try {
@@ -78,30 +87,12 @@ public class MainConsole {
                 Movie m1 = new Movie(ar[1], Integer.parseInt(ar[2]),ar[3],ar[4]);
                 list.add(m1);
                 //System.out.println("movie list added from file!");
+
             }
             in.close();
         } catch (IOException e) {
             System.out.println("File Read Error");
         }
-    }
-
-    private static void menu1() {
-        // print all data
-        list.toString();
-    }
-
-    private static void menu2() {
-        // find movie by genre
-    }
-
-    private static void menu3() {
-        //insert new movie
-        System.out.println("Enter the movie title");
-        //String new_movie_title = scanner.nextLine();
-    }
-
-    private static void menu4() {
-        // delete movie by name
     }
 
 }

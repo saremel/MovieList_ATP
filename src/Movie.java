@@ -37,7 +37,15 @@ public class Movie {
         this.director = director;
     }
 
-
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", year=" + year +
+                ", genre='" + genre + '\'' +
+                ", director='" + director + '\'' +
+                '}';
+    }
 
     public Movie(String title, int year, String genre, String director) {
 
