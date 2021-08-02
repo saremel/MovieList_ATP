@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.InterfaceAddress;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,20 +27,30 @@ public class MainConsole {
                 switch (selection){
                     case 1:
                         status = false;
-                        System.out.println(list.toString());
+                        System.out.println(list);
                         break;
                     case 2:
                         status = false;
                         // find movie by genre
+                        System.out.println("Enter genre to search");
+                        String search = scanner.nextLine();
+                        for (Object m : list){
+                            if (list.contains(search)){
+                                System.out.println(m.toString());
+                            }
+                        }
                         break;
                     case 3:
                         status = false;
                         System.out.println("Enter the new movie's title");
                         String title = scanner.nextLine();
+
                         System.out.println("Enter the new movie's director");
                         String director = scanner.nextLine();
+
                         System.out.println("Enter the movie's genre");
                         String genre = scanner.nextLine();
+
                         System.out.println("Enter the movie' year");
                         int year = scanner.nextInt();
                         Movie m = new Movie(title, year, genre, director);
@@ -61,15 +70,8 @@ public class MainConsole {
                         System.out.println("Please enter a valid number");
 
                 }
-
-
             }
-
         }
-
-
-
-
     }
 
     private static void fillListWithMovie(ArrayList<Movie> list) {
