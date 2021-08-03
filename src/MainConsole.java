@@ -34,10 +34,12 @@ public class MainConsole {
                         // find movie by genre
                         System.out.println("Enter genre to search");
                         String search = scanner.nextLine();
+
+
                         for (Object m : list){
-                            if (list.contains(search)){
-                                System.out.println(m.toString());
-                            }
+                            //if (list.contains(search)){
+                                System.out.println(m);
+                            //}
                         }
                         break;
                     case 3:
