@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainConsole {
+    static MyLinkedList list;
      public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList list= new ArrayList<Movie>();
-        fillListWithMovie(list);
+        fillListWithMovie();
 
         System.out.println("Welcome to the Movie Organizer! \r \n");
         System.out.println("Please choose a option");
@@ -23,26 +23,22 @@ public class MainConsole {
             boolean status = true;
             while (status){
                 System.out.println("Enter your choice with a number:");
-                int selection =  scanner.nextInt();
+                String selection =  scanner.nextLine();
                 switch (selection){
-                    case 1:
+                    case "1":
                         status = false;
-                        System.out.println(list);
+                        list.printData();
                         break;
-                    case 2:
-                        status = false;
+                    case "2":
+
                         // find movie by genre
-                        System.out.println("Enter genre to search");
-                        String search = scanner.nextLine();
+                        System.out.print("Enter your movie genre:");
+                        String g = scanner.nextLine();
 
-
-                        for (Object m : list){
-                            //if (list.contains(search)){
-                                System.out.println(m);
-                            //}
-                        }
+                        list.searchGenre(g);
+                        status = false;
                         break;
-                    case 3:
+                    case "3":
                         status = false;
                         System.out.println("Enter the new movie's title");
                         String title = scanner.nextLine();
@@ -59,11 +55,14 @@ public class MainConsole {
                         list.add(m);
                         System.out.println("Movie added");
                         break;
-                    case 4:
+                    case "4":
                         status = false;
-                        // delete movie by name
+                        System.out.println("\r\nWhich song will you delete by name?");
+                        String del = scanner.nextLine();
+                        list.deleteNode(del);
+
                         break;
-                    case 0:
+                    case "0":
                         status = false;
                         System.out.println("See you :)");
                         appRunning = false;
@@ -76,7 +75,8 @@ public class MainConsole {
         }
     }
 
-    private static void fillListWithMovie(ArrayList<Movie> list) {
+    private static void fillListWithMovie() {
+        list = new MyLinkedList();
         String[] ar;
         String filePath = "C:\\Users\\sarey\\Desktop\\deneme.txt";
         try {

@@ -8,10 +8,10 @@ public class MyNode implements Comparable<MyNode> {
         this.next = null;
     }
 
-    public Movie getSong() {
+    public Movie getMovie() {
         return this.movie;
     }
     public int compareTo(MyNode otherNode) {
-        return movie.getTitle().compareTo(otherNode.getSong().getTitle());
+        return movie.getTitle().compareTo(otherNode.getMovie().getTitle());
     }
 }
