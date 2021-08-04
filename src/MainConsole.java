@@ -18,7 +18,7 @@ public class MainConsole {
         while(appRunning){
             System.out.println("******************************************");
             System.out.println("******************************************");
-            System.out.println("1 - List Movies \r\n" +  "2 - Find movie by genre \r\n" + "3 - Add new movie to list \r\n" + "4 - Delete movie to list by title \r\n" + "0 - Exit" );
+            System.out.println("1 - List Movies \r\n" +  "2 - Find movie \r\n" + "3 - Add new movie to list \r\n" + "4 - Delete movie to list by title \r\n" + "0 - Exit" );
 
             boolean status = true;
             while (status){
@@ -30,14 +30,50 @@ public class MainConsole {
                         list.printData();
                         break;
                     case "2":
+                        System.out.println("1 - search by movie name \r\n" +  "2 - search by movie genre \r\n" + "3 - search by movie year \r\n" + "4 - search by movie director \r\n" + "0 - Exit" );
+                        boolean search = true;
+                        while (search) {
+                            System.out.println("Enter your choice with a number:");
+                            String searchBy = scanner.nextLine();
+                            switch (searchBy) {
 
-                        // find movie by genre
-                        System.out.print("Enter your movie genre:");
-                        String g = scanner.nextLine();
+                                case "1":
+                                    System.out.print("Enter your movie title:");
+                                    String t = scanner.nextLine();
 
-                        list.searchGenre(g);
-                        status = false;
-                        break;
+                                    list.searchTitle(t);
+                                    search = false;
+                                    break;
+
+                                case "2":
+                                    System.out.print("Enter your movie genre:");
+                                    String g = scanner.nextLine();
+                                    list.searchGenre(g);
+                                    status = false;
+                                    break;
+                                case "3":
+                                    System.out.print("Enter your movie year:");
+                                    int y = Integer.parseInt(scanner.nextLine());
+
+                                    list.searchYear(y);
+                                    search = false;
+                                    break;
+
+                                case "4":
+                                    System.out.print("Enter your movie's director:");
+                                    String d = scanner.nextLine();
+                                    list.searchDirector(d);
+                                    status = false;
+                                    break;
+                                case "0":
+                                    status = false;
+                                    System.out.println("Exit");
+                                    appRunning = false;
+                                    break;
+                                default:
+                                    System.out.println("Please enter a valid number");
+                            }
+                        }
                     case "3":
                         status = false;
                         System.out.println("Enter the new movie's title");

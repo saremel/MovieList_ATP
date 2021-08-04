@@ -21,6 +21,22 @@ public class MyLinkedList {
         size++;
     }
 
+    public void searchTitle(String title) {
+        MyNode currentNode = root;
+        while (currentNode != null) {
+            Movie movie = currentNode.getMovie();
+            if (movie.getTitle().contains(title)) {
+                System.out.println();
+                System.out.println(movie);
+                currentNode = currentNode.next;
+            } else
+            {
+                currentNode = currentNode.next;
+
+            }
+        }
+    }
+
 
 
     public void searchGenre(String genre) {
@@ -39,11 +55,27 @@ public class MyLinkedList {
         }
     }
 
-    public void searchTitle(String name) {
+    public void searchYear(int year) {
         MyNode currentNode = root;
         while (currentNode != null) {
             Movie movie = currentNode.getMovie();
-            if (movie.getTitle().equals(name)) {
+            if (year == movie.getYear()) {
+                System.out.println();
+                System.out.println(movie);
+                currentNode = currentNode.next;
+            } else
+            {
+                currentNode = currentNode.next;
+
+            }
+        }
+    }
+
+    public void searchDirector(String director) {
+        MyNode currentNode = root;
+        while (currentNode != null) {
+            Movie movie = currentNode.getMovie();
+            if (movie.getDirector().equals(director)) {
                 System.out.println();
                 System.out.println(movie);
                 currentNode = currentNode.next;
